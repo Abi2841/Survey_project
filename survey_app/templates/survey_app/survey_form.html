@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $(document).ready(function() {
+    $("#dob").datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+  </script>
+    <meta charset="UTF-8">
+    <title>Election Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #F2F2F2;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #BBBBBB;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .form-group {
+            width: 500px;
+            margin: 20px;
+            
+        }
+        .btn {
+            margin-top: 20px;
+            width: 100px;
+            align-self: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+        header h3 {
+            text-align: center;
+            margin: 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Election Survey Form</h2>
+        <form method="post" action="{% url 'survey_form' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" required placeholder="First_name">
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" required placeholder="Last_name">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">Female</label><br>
+                <input type="radio" id="other" name="gender" value="Other" required>
+                <label for="other">Other</label>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth(YYYY-MM-DD)</label>
+                <input type="text" class="form-control" id="dob" name="dob" required placeholder="YYYY-MM-DD">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" name="city" required placeholder="City">
+            </div>
+            <div class="form-group">
+                <label for="party_name">Party Name</label>
+                <select id="party_name" name="party_name" class="form-control" required>
+                    <option value="AAA">AAA</option>
+                    <option value="AAB">AAB</option>
+                    <option value="AAC">AAC</option>
+                    <option value="AAD">AAD</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Vote</button>
+        </form>
+    </div>
+</body>
+</html>
